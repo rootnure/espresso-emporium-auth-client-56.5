@@ -22,7 +22,8 @@ const Register = () => {
             .then(result => {
                 console.log(result);
                 // new user has been created
-                const user = { name, email, password: `asd5f${password}3w5tnd6g` };
+                const createAt = result.user.metadata.creationTime;
+                const user = { name, email, createAt, password: btoa(password) };
                 fetch('http://localhost:5000/user', {
                     method: 'POST',
                     headers: {
