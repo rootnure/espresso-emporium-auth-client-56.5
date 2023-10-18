@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { IoMdHome, IoIosPeople, IoMdPerson, IoIosLogIn, IoIosLogOut, IoMdAddCircleOutline } from "react-icons/io";
+import { AiOutlineUserAdd } from "react-icons/ai";
 import './NavBar.css';
 
 
@@ -20,10 +21,13 @@ const NavBar = () => {
                 <IoMdPerson></IoMdPerson>
             </NavLink>
         </> : ''}
+        <NavLink to="/register" title="Register a new account" className="ee-nav-btn">
+            <AiOutlineUserAdd></AiOutlineUserAdd>
+        </NavLink>
         <NavLink to="/login" title="Login" className="ee-nav-btn">
             <IoIosLogIn></IoIosLogIn>
         </NavLink>
-        {!isNaN(1) ? <>
+        {isNaN(1) ? <>
             <button title="logout" className="ee-nav-btn">
                 <IoIosLogOut></IoIosLogOut>
             </button>
