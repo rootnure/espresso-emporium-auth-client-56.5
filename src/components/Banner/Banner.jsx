@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
-        <section style={{ backgroundImage: 'url("https://i.ibb.co/kHL4dPJ/3.png")' }} className="h-[820px] bg-fixed bg-cover">
+        <section style={{ backgroundImage: 'url("https://i.ibb.co/kHL4dPJ/3.png")' }} className="h-[820px] bg-fixed bg-cover bg-no-repeat">
             <div className="container mx-auto flex justify-end items-center h-full">
                 <div className="text-white w-6/12 flex flex-col gap-y-6">
                     <h2 className="text-5xl font-rancho">Would you like a Cup of Delicious Coffee?</h2>

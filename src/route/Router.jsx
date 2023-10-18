@@ -7,6 +7,7 @@ import UpdateExisting from "../pages/UpdateExisting/UpdateExisting";
 import CoffeeDetails from "../pages/CoffeeDetails/CoffeeDetails";
 import Login from "../pages/LoginSignup/Login";
 import Register from "../pages/LoginSignup/Register";
+import Users from "../pages/Users/Users";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
                 path: "/coffeeDetails/:id",
                 element: <CoffeeDetails />,
                 loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`),
+            },
+            {
+                path: '/users',
+                element: <Users />,
+                loader: () => fetch('http://localhost:5000/user'),
             },
             {
                 path: '/register',

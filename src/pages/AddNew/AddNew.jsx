@@ -60,7 +60,7 @@ const AddNew = () => {
             <Helmet>
                 <title>Add New Coffee | Espresso Emporium</title>
             </Helmet>
-            <main className="my-28 bg-cover" style={{ backgroundImage: 'url("https://i.ibb.co/hB6Tp24/11.png")' }}>
+            <main className="my-24 bg-cover" style={{ backgroundImage: 'url("https://i.ibb.co/hB6Tp24/11.png")' }}>
                 <div className="container mx-auto px-20">
                     <section className="pt-12 pb-6">
                         <button className="font-rancho text-2xl [text-shadow:_2px_2px_8px_#242222EE]"><Link to="/" className="flex items-center py-4 ps-2 pe-3 hover:bg-[#D2B48C] rounded-lg duration-150 gap-x-3"><MdArrowBack></MdArrowBack> Back to home</Link></button>
