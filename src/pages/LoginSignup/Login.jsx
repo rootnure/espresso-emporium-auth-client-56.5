@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import SectionHeader from "../../components/SectionHeader/SectionHeader";
 
 
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
                     lastLoggedAt: result.user?.metadata?.lastSignInTime,
                 }
                 // update lst logged at in the database
-                fetch('https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/user', {
+                fetch('https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json',
@@ -53,12 +54,13 @@ const Login = () => {
             <Helmet>
                 <title>Login | Espresso Emporium</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-fit my-24">
                 <div className="hero-content flex-col">
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold">Please Login to your account</h1>
+                        <SectionHeader
+                            sectionTitle="Please Login to your account" />
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full max-w-sm border">
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">

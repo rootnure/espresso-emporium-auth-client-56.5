@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import SectionHeader from "../../components/SectionHeader/SectionHeader";
 
 
 const Register = () => {
@@ -25,7 +26,7 @@ const Register = () => {
                 // new user has been created
                 const createAt = result.user.metadata.creationTime;
                 const user = { name, email, createAt, encryptedPassword: btoa(password) };
-                fetch('https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/user', {
+                fetch('https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -51,12 +52,13 @@ const Register = () => {
             <Helmet>
                 <title>Register | Espresso Emporium</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
+            <main className="hero min-h-fit my-24">
                 <div className="hero-content flex-col">
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold">Please Register</h1>
+                        <SectionHeader
+                            sectionTitle="Please Register to stay connect with us" />
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full max-w-sm border">
                         <form onSubmit={handleRegister} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -80,9 +82,12 @@ const Register = () => {
                                 <button type="submit" className="btn btn-primary">Register</button>
                             </div>
                         </form>
+                        <div>
+                            <p className="text-center mb-8">Already have an account? <Link to='/login' className="underline font-semibold">Login</Link></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </main>
         </>
     );
 };

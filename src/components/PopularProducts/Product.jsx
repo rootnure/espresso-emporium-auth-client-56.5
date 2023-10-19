@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import { AiFillEye, AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Product = ({ product, handleUpdateUIAfterDelete }) => {
     const { _id, photo, name, chef, price } = product;
+
+    const { user } = useContext(AuthContext);
 
     const handleDelete = _id => {
         console.log(_id);
@@ -19,7 +23,7 @@ const Product = ({ product, handleUpdateUIAfterDelete }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/coffee/${_id}`, {
+                fetch(`https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/coffee/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -64,13 +68,16 @@ const Product = ({ product, handleUpdateUIAfterDelete }) => {
                     <Link to={`/coffeeDetails/${_id}`}>
                         <button className='bg-[#D2B48C] border-2 border-[#D2B48C] hover:text-[#D2B48C] hover:bg-transparent rounded duration-150 p-1.5' title='View Details'><AiFillEye></AiFillEye></button>
                     </Link>
-                    <Link to={`/updateExisting/${_id}`}>
-                        <button className='bg-[#3C393B] border-2 border-[#3C393B] hover:text-[#3C393B] hover:bg-transparent rounded duration-150 p-1.5' title='Edit/Update Information'><AiFillEdit></AiFillEdit></button>
-                    </Link>
-                    <button
-                        onClick={() => handleDelete(_id)}
-                        className='bg-[#EA4744] border-2 border-[#EA4744] hover:text-[#EA4744] hover:bg-transparent rounded duration-150 p-1.5'
-                        title='Delete Item'><AiTwotoneDelete></AiTwotoneDelete></button>
+                    {user ? <>
+                        <Link to={`/updateExisting/${_id}`}>
+                            <button className='bg-[#3C393B] border-2 border-[#3C393B] hover:text-[#3C393B] hover:bg-transparent rounded duration-150 p-1.5' title='Edit/Update Information'><AiFillEdit></AiFillEdit></button>
+                        </Link>
+                        <button
+                            onClick={() => handleDelete(_id)}
+                            className='bg-[#EA4744] border-2 border-[#EA4744] hover:text-[#EA4744] hover:bg-transparent rounded duration-150 p-1.5'
+                            title='Delete Item'><AiTwotoneDelete></AiTwotoneDelete>
+                        </button>
+                    </> : ''}
                 </div>
             </div>
         </div>

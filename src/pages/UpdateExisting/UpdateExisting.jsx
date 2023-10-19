@@ -37,7 +37,7 @@ const UpdateExisting = () => {
         const updatedCoffee = { name, quantity, chef, supplier, category, details, photo, price }
         console.log(updatedCoffee);
 
-        fetch(`https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/coffee/${_id}`, {
+        fetch(`https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/coffee/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
