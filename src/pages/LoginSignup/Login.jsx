@@ -1,14 +1,58 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
+
+    const { signInUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const loginCredential = { email, password };
-        console.log(loginCredential);
+        // const loginCreds = { email, password };
+        // console.log(loginCreds);
+
+        signInUser(email, password)
+            .then(result => {
+                // console.log(result.user.metadata);
+                const user = {
+                    email,
+                    lastLoggedAt: result.user?.metadata?.lastSignInTime,
+                }
+                // update lst logged at in the database
+                fetch('http://localhost:5000/user', {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(user),
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+                        if (data.modifiedCount > 0) {
+                            Swal.fire(
+                                'Logged in',
+                                'Successfully logged in to your account',
+                                'success'
+                            ).then(result => {
+                                if (result.isConfirmed) {
+                                    navigate('/users');
+                                }
+                            }
+                            )
+                        }
+                    })
+            })
+            .catch(err => {
+                console.error(err);
+            })
     }
 
     return (
@@ -16,7 +60,7 @@ const Login = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold">Please Register</h1>
+                        <h1 className="text-5xl font-bold">Please Login to your account</h1>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">

@@ -56,11 +56,12 @@ const Users = () => {
                         <caption className="font-bold text-3xl">All users info</caption>
                         {/* head */}
                         <thead>
-                            <tr>
+                            <tr className="uppercase text-center">
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Created At</th>
+                                <th>Last Logged In</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -72,6 +73,7 @@ const Users = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.createAt}</td>
+                                    <td>{user.lastLoggedAt}</td>
                                     <td>
                                         <button
                                             title="Edit"
