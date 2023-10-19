@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
@@ -37,16 +37,8 @@ const Login = () => {
                     .then(data => {
                         // console.log(data);
                         if (data.modifiedCount > 0) {
-                            Swal.fire(
-                                'Logged in',
-                                'Successfully logged in to your account',
-                                'success'
-                            ).then(result => {
-                                if (result.isConfirmed) {
-                                    navigate('/users');
-                                }
-                            }
-                            )
+                            toast.success('Successfully logged in');
+                            navigate('/');
                         }
                     })
             })

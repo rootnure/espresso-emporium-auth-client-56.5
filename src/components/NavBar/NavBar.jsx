@@ -1,16 +1,29 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoMdHome, IoIosPeople, IoMdPerson, IoIosLogIn, IoIosLogOut, IoMdAddCircleOutline } from "react-icons/io";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import './NavBar.css';
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        logOut();
+        toast.success('Logout successfully');
+        navigate('/');
+    }
 
     const links = <>
         <NavLink to="/" title="Home" className="ee-nav-btn">
             <IoMdHome></IoMdHome>
         </NavLink>
-        {!isNaN(1) ? <>
+        {user ? <>
             <NavLink to="/addNew" title="Add new coffee" className="ee-nav-btn">
                 <IoMdAddCircleOutline></IoMdAddCircleOutline>
             </NavLink>
@@ -20,17 +33,17 @@ const NavBar = () => {
             <NavLink to="/profile" title="My Profile" className="ee-nav-btn">
                 <IoMdPerson></IoMdPerson>
             </NavLink>
-        </> : ''}
-        <NavLink to="/register" title="Register a new account" className="ee-nav-btn">
-            <AiOutlineUserAdd></AiOutlineUserAdd>
-        </NavLink>
-        <NavLink to="/login" title="Login" className="ee-nav-btn">
-            <IoIosLogIn></IoIosLogIn>
-        </NavLink>
-        {isNaN(1) ? <>
-            <button title="logout" className="ee-nav-btn">
+            <button onClick={handleLogOut} title="logout" className="ee-nav-btn">
                 <IoIosLogOut></IoIosLogOut>
             </button>
+        </> : ''}
+        {!user ? <>
+            <NavLink to="/register" title="Register a new account" className="ee-nav-btn">
+                <AiOutlineUserAdd></AiOutlineUserAdd>
+            </NavLink>
+            <NavLink to="/login" title="Login" className="ee-nav-btn">
+                <IoIosLogIn></IoIosLogIn>
+            </NavLink>
         </> : ''}
     </>
 

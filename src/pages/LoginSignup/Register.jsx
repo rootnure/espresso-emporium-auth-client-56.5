@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
 
     const navigate = useNavigate();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, logOut } = useContext(AuthContext);
 
     const handleRegister = e => {
         e.preventDefault();
@@ -15,12 +15,12 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const newUser = { name, email, password };
-        console.log(newUser);
+        // const newUser = { name, email, password };
+        // console.log(newUser);
 
         createUser(name, email, password)
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 // new user has been created
                 const createAt = result.user.metadata.creationTime;
                 const user = { name, email, createAt, encryptedPassword: btoa(password) };
@@ -34,15 +34,9 @@ const Register = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.insertedId) {
-                            Swal.fire({
-                                title: 'Account created successfully!',
-                                text: 'Continue browsing by clicking OK',
-                                icon: 'success'
-                            }).then(result => {
-                                if (result.isConfirmed) {
-                                    navigate('/users');
-                                }
-                            })
+                            logOut();
+                            toast.info('Account created successfully. Please Login!')
+                            navigate('/login');
                         }
                     })
             })

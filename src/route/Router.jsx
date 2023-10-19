@@ -40,6 +40,10 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/user'),
             },
             {
+                path: '/profile',
+                element: <div className="my-24">Profile coming soon</div>,
+            },
+            {
                 path: '/register',
                 element: <Register />,
             },
