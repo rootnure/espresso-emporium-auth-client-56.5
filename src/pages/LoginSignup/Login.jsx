@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -26,7 +27,7 @@ const Login = () => {
                     lastLoggedAt: result.user?.metadata?.lastSignInTime,
                 }
                 // update lst logged at in the database
-                fetch('http://localhost:5000/user', {
+                fetch('https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json',
@@ -49,6 +50,9 @@ const Login = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Login | Espresso Emporium</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center">

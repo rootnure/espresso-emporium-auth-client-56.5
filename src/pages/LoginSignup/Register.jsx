@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -24,7 +25,7 @@ const Register = () => {
                 // new user has been created
                 const createAt = result.user.metadata.creationTime;
                 const user = { name, email, createAt, encryptedPassword: btoa(password) };
-                fetch('http://localhost:5000/user', {
+                fetch('https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -47,6 +48,9 @@ const Register = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Register | Espresso Emporium</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center">

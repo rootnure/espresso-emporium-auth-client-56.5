@@ -8,6 +8,7 @@ import CoffeeDetails from "../pages/CoffeeDetails/CoffeeDetails";
 import Login from "../pages/LoginSignup/Login";
 import Register from "../pages/LoginSignup/Register";
 import Users from "../pages/Users/Users";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/coffee'),
+                loader: () => fetch('https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/coffee'),
             },
             {
                 path: "/addNew",
@@ -27,21 +28,21 @@ const router = createBrowserRouter([
             {
                 path: "/updateExisting/:id",
                 element: <UpdateExisting />,
-                loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
+                loader: ({ params }) => fetch(`https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/coffee/${params.id}`)
             },
             {
                 path: "/coffeeDetails/:id",
                 element: <CoffeeDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`),
+                loader: ({ params }) => fetch(`https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/coffee/${params.id}`),
             },
             {
                 path: '/users',
                 element: <Users />,
-                loader: () => fetch('http://localhost:5000/user'),
+                loader: () => fetch('https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/user'),
             },
             {
                 path: '/profile',
-                element: <div className="my-24">Profile coming soon</div>,
+                element: <Profile />,
             },
             {
                 path: '/register',

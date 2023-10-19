@@ -19,7 +19,7 @@ const Product = ({ product, handleUpdateUIAfterDelete }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/coffee/${_id}`, {
+                fetch(`https://56-5-espresso-emporium-auth-server-jk8sypxlo.vercel.app/coffee/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
