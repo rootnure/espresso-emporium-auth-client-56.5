@@ -26,7 +26,7 @@ const Register = () => {
                 // new user has been created
                 const createAt = result.user.metadata.creationTime;
                 const user = { name, email, createAt, encryptedPassword: btoa(password) };
-                fetch('https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/user', {
+                fetch('https://espresso-emporium-auth-server-rootnure.vercel.app//user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

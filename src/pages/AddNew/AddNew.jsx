@@ -33,7 +33,7 @@ const AddNew = () => {
         const newCoffee = { name, quantity, chef, supplier, category, details, photo, price }
         console.log(newCoffee);
 
-        fetch('https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/coffee', {
+        fetch('https://espresso-emporium-auth-server-rootnure.vercel.app//coffee', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

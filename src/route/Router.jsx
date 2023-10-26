@@ -19,7 +19,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                loader: () => fetch('https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/coffee'),
+                loader: () => fetch('https://espresso-emporium-auth-server-rootnure.vercel.app//coffee'),
             },
             {
                 path: "/addNew",
@@ -28,17 +28,17 @@ const router = createBrowserRouter([
             {
                 path: "/updateExisting/:id",
                 element: <UpdateExisting />,
-                loader: ({ params }) => fetch(`https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/coffee/${params.id}`)
+                loader: ({ params }) => fetch(`https://espresso-emporium-auth-server-rootnure.vercel.app//coffee/${params.id}`)
             },
             {
                 path: "/coffeeDetails/:id",
                 element: <CoffeeDetails />,
-                loader: ({ params }) => fetch(`https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/coffee/${params.id}`),
+                loader: ({ params }) => fetch(`https://espresso-emporium-auth-server-rootnure.vercel.app//coffee/${params.id}`),
             },
             {
                 path: '/users',
                 element: <Users />,
-                loader: () => fetch('https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/user'),
+                loader: () => fetch('https://espresso-emporium-auth-server-rootnure.vercel.app//user'),
             },
             {
                 path: '/profile',

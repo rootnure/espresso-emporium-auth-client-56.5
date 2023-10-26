@@ -28,7 +28,7 @@ const Login = () => {
                     lastLoggedAt: result.user?.metadata?.lastSignInTime,
                 }
                 // update lst logged at in the database
-                fetch('https://espresso-emporium-auth-server-rootnure-eyprq720g.vercel.app/user', {
+                fetch('https://espresso-emporium-auth-server-rootnure.vercel.app//user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json',
